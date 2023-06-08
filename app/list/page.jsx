@@ -7,14 +7,12 @@ export default async function List() {
   console.log(result);
   return (
     <div className="list-bg">
-      {result.map((data, i) => {
-        return (
-          <div className="list-item">
-            <h4>{data.title}</h4>
-            <p>1월 1일</p>
-          </div>
-        );
-      })}
+      {result.map((data, i) => (
+        <div key={i} className="list-item">
+          <h4>{data.title}</h4>
+          <p>1월 1일</p>
+        </div>
+      ))}
     </div>
   );
 }

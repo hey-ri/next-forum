@@ -12,7 +12,7 @@ async function Detail(props) {
     <div>
       <h4>상세페이지</h4>
       <h5>{result.name}</h5>
-      <p>{result.content}</p>
+      <p>{result.title}</p>
     </div>
   );
 }

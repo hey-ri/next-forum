@@ -21,8 +21,15 @@ export default function ListItme({ result }) {
           </Link>
           <Link href={`/edit/${result[i]._id}`}>✏️</Link>
           <span
-            onClick={() => {
-              fetch('/api/post/delete', { method: 'POST', body: result[i]._id }).then(() => redirect('/list'));
+            onClick={(e) => {
+              fetch('/api/post/delete', { method: 'POST', body: result[i]._id })
+                .then((r) => r.json())
+                .then(() => {
+                  e.target.parentElement.style.opacity = 0;
+                  setTimeout(() => {
+                    e.target.parentElement.style.display = 'none';
+                  }, 1000);
+                });
             }}
           >
             X

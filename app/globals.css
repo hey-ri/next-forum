@@ -35,7 +35,7 @@ a {
   margin-bottom: 5px;
   box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
   opacity: 1;
-  transform: all .5s;
+  transition: all .5s;
 }
 
 .list-item h4 {

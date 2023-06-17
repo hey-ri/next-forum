@@ -5,8 +5,8 @@ export default async function handler(req, res) {
   const db = client.db('forum');
   const result = await db.collection('post').find().toArray();
 
-  console.log(result);
-  console.log(123);
+  // console.log(result);
+  // console.log(123);
 
   if (req.method == 'GET') {
     res.status(200).json(result);

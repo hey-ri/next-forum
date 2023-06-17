@@ -6,11 +6,12 @@ async function Detail(props) {
   const client = await connectDB;
   const db = client.db('forum');
   const result = await db.collection('post').findOne({ _id: new ObjectId(props.params.detailId) });
-  console.log(props.params.detailId);
+  // console.log('상세페이지 id', props.params.detailId);
+  console.log(result);
   return (
     <div>
       <h4>상세페이지</h4>
-      <h5>{result.title}</h5>
+      <h5>{result.name}</h5>
       <p>{result.content}</p>
     </div>
   );

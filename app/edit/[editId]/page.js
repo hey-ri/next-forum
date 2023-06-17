@@ -6,7 +6,7 @@ export default async function Edit(props) {
   const client = await connectDB;
   const db = client.db('forum');
   const result = await db.collection('post').findOne({ _id: new ObjectId(props.params.editId) });
-  console.log('수정페이지', result);
+  // console.log('수정페이지', result);
 
   /* await db.collection('post').updateOne({ 수정정보 id 정도},{$set:{수정할 이름이나 내용들을 뭘로 할지 정리해준다}}); */
 

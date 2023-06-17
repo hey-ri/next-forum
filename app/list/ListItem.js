@@ -1,5 +1,4 @@
 'use client';
-import { redirect } from 'next/dist/server/api-utils';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
@@ -20,7 +19,7 @@ export default function ListItme({ result }) {
             <h4>{result[i].title}</h4>
           </Link>
           <Link href={`/edit/${result[i]._id}`}>✏️</Link>
-          <span
+          <button
             onClick={(e) => {
               fetch('/api/post/delete', { method: 'POST', body: result[i]._id })
                 .then((r) => r.json())
@@ -30,10 +29,11 @@ export default function ListItme({ result }) {
                     e.target.parentElement.style.display = 'none';
                   }, 1000);
                 });
+              // fetch('/api/abc/tesst');
             }}
           >
             X
-          </span>
+          </button>
           <p>1월 1일</p>
         </div>
       ))}

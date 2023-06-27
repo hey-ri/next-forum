@@ -23,12 +23,14 @@ export default function ListItme({ result }) {
             onClick={(e) => {
               fetch('/api/post/delete', { method: 'POST', body: result[i]._id })
                 .then((r) => r.json())
-                .then(() => {
+                .then((r) => {
+                  console.log('삭제완료후', r);
                   e.target.parentElement.style.opacity = 0;
                   setTimeout(() => {
                     e.target.parentElement.style.display = 'none';
                   }, 1000);
-                });
+                })
+                .catch((err) => console.log(err));
               // fetch('/api/abc/tesst');
             }}
           >

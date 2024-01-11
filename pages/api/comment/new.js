@@ -15,6 +15,6 @@ export default async function handler(req, res) {
 
     const db = (await connectDB).db('forum');
     let result = await db.collection('comment').insertOne(saveData);
-    console.log(result);
+    res.status(200).json('저장완료');
   }
 }

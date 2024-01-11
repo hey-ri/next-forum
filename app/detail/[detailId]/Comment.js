@@ -24,7 +24,7 @@ export default function Comment(props) {
       <button
         onClick={() => {
           console.log(comments);
-          fetch('/api/comment/new', { method: 'POST', body: JSON.stringify({ comment: comments, _id: props.parentId }) });
+          fetch('/api/comment/new', { method: 'POST', body: JSON.stringify({ comment: comments, _id: props.parentId }) }).then((d) => setCommentList(d));
         }}
       >
         전송

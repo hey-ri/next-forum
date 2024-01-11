@@ -6,16 +6,19 @@ export default function Comment(props) {
   const [comments, setComments] = useState('');
   const [commentList, setCommentList] = useState([]);
 
-  useEffect(() => {
-    fetch('/api/comment/list?id=' + props.parentId)
-      .then((r) => r.json())
-      .then((result) => {
-        console.log(result);
-        setCommentList(result);
-      });
+  const fetchComments = async () => {
+    try {
+      const response = await fetch('/api/comment/list?id=' + props.parentId);
+      const result = await response.json();
+      setCommentList(result);
+    } catch (error) {
+      console.error('댓글 목록 불러오기 오류:', error);
+    }
+  };
 
-    console.log('commentlist', commentList.length);
-  }, []);
+  useEffect(() => {
+    fetchComments();
+  }, [props.parentId, commentList]);
 
   return (
     <div>
@@ -24,7 +27,7 @@ export default function Comment(props) {
       <button
         onClick={() => {
           console.log(comments);
-          fetch('/api/comment/new', { method: 'POST', body: JSON.stringify({ comment: comments, _id: props.parentId }) }).then((d) => setCommentList(d));
+          fetch('/api/comment/new', { method: 'POST', body: JSON.stringify({ comment: comments, _id: props.parentId }) });
         }}
       >
         전송

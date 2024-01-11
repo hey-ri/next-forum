@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   const alreadyData = await db.collection('user_cred').find().toArray();
   // const alreadyData = await db.collection('user_cred').findOne({ email: req.user.email });
 
-  console.log(alreadyData.map((result) => result.email).includes(req.body.email));
+  // console.log(alreadyData.map((result) => result.email).includes(req.body.email));
   if (alreadyData.map((result) => result.email).includes(req.body.email)) {
     res.status(500).json('해당 이메일은 이미 존재합니다.');
   } else if (req.method === 'POST' && req.body.password !== '' && req.body.email !== '' && req.body.name !== '') {

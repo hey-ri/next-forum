@@ -4,10 +4,11 @@ import { authOptions } from '../auth/[...nextauth]';
 
 export default async function handler(req, res) {
   const session = await getServerSession(req, res, authOptions);
+  console.log('name, title, role 출력', session);
   if (session) {
     req.body.author = session.user.email;
   }
-  console.log(req.body);
+  console.log('session과 같은 값', req.body);
   if (req.method == 'POST') {
     if (req.body.title !== '' && req.body.content !== '') {
       const db = (await connectDB).db('forum');

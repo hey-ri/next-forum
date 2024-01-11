@@ -13,11 +13,13 @@ export default function Comment(props) {
         console.log(result);
         setCommentList(result);
       });
+
+    console.log('commentlist', commentList.length);
   }, []);
 
   return (
     <div>
-      <div>{commentList.length > 0 ? commentList.map((d, i) => <p key={i}>{d.comment}</p>) : '댓글을 작성 해보세요'}</div>
+      <div>{commentList.length > 0 ? commentList.map((d, i) => <p key={i}>{d.content}</p>) : '댓글을 작성 해보세요'}</div>
       <input onChange={(e) => setComments(e.target.value)} />
       <button
         onClick={() => {

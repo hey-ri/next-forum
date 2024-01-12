@@ -38,9 +38,54 @@ export default function Comment(props) {
     }
   };
 
+  const deleteComment = async (commentId) => {
+    console.log(props.parentId, { commentId });
+    try {
+      const response = await fetch('/api/comment/delete', {
+        method: 'POST',
+        body: commentId,
+      });
+
+      if (response.ok) {
+        await fetchComments();
+        console.log('삭제완료');
+      } else {
+        console.error('댓글 삭제 실패:', response.statusText);
+      }
+    } catch (error) {
+      console.error('댓글 삭제 요청 오류:', error);
+    }
+  };
+
   return (
     <div>
-      <div>{commentList.length > 0 ? commentList.map((d, i) => <p key={i}>{d.content}</p>) : '댓글을 작성 해보세요'}</div>
+      <div>
+        {commentList.length > 0
+          ? commentList.map((d, i) => (
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '300px',
+                  marginBottom: '5px',
+                  border: '1px solid #ccc',
+                  padding: '3px',
+                  borderRadius: '5px',
+                }}
+                key={i}
+              >
+                <p>{d.content}</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                  <p style={{ fontSize: '0.8rem' }}>{d.author}</p>
+                  <button style={{ cursor: 'pointer' }} onClick={() => deleteComment(d._id)}>
+                    휴지통
+                  </button>
+                </div>
+              </div>
+            ))
+          : '댓글을 작성 해보세요'}
+      </div>
       <input value={comments} onChange={(e) => setComments(e.target.value)} />
       <button onClick={handleCommentSubmit}>전송</button>
     </div>

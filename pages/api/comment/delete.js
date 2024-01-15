@@ -5,24 +5,24 @@ import { authOptions } from '../auth/[...nextauth]';
 
 export default async function handler(req, res) {
   if (req.method == 'POST') {
-    // let session = await getServerSession(req, res, authOptions);
+    const session = await getServerSession(req, res, authOptions);
     const db = (await connectDB).db('forum');
+    req.body = JSON.parse(req.body);
 
-    let result = await db.collection('comment').find().toArray();
+    const commentId = req.body.commentId.toString();
 
-    const findData = await db.collection('comment').deleteOne({ _id: new ObjectId(req.body) });
+    const result = await db.collection('comment').findOne(new ObjectId(commentId));
 
-    console.log('findData', new ObjectId(req.body));
-
-    res.status(200).json('저장완료');
-
-    /*if (session) {
-      if (result.author == session.user.email) {
+    if (session) {
+      if (result.author.toString() == session.user.email) {
+        const findData = await db.collection('comment').deleteOne({ _id: new ObjectId(req.body.commentId) });
+        console.log('findData', findData);
+        res.status(200).json('저장완료');
       } else {
         return res.status(500).json('현재유저와 작성자 불일치');
       }
     } else {
       return res.status(500).json('로그인 후 본인 글만 삭제가능');
-    } */
+    }
   }
 }

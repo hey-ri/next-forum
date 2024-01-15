@@ -43,7 +43,7 @@ export default function Comment(props) {
     try {
       const response = await fetch('/api/comment/delete', {
         method: 'POST',
-        body: commentId,
+        body: JSON.stringify({ commentId: commentId, parentId: props.parentId }),
       });
 
       if (response.ok) {

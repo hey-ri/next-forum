@@ -35,7 +35,7 @@ a {
   margin-bottom: 5px;
   box-shadow: rgb(224, 224, 224) 0px 2px 4px 0px;
   opacity: 1;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 .list-item h4 {
@@ -65,4 +65,14 @@ button {
   background: lightgray;
   border: none;
   border-radius: 5px;
+}
+
+.dark-mode,
+.dark-mode .navbar {
+  background-color: #0b0b0d;
+}
+.dark-mode,
+.dark-mode span,
+.dark-mode a {
+  color: #ececec;
 }

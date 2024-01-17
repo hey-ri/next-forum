@@ -14,7 +14,7 @@ export default async function Write() {
         <form action="/api/post/new" method="POST">
           <input type="text" name="name" placeholder="제목을 입력하세요" />
           <input type="text" name="title" placeholder="내용을 입력하세요" />
-          <input
+          {/* <input
             type="file"
             accept="image/*"
             onChange={async (e) => {
@@ -42,7 +42,7 @@ export default async function Write() {
               }
             }}
           />
-          <img src={src} alt="" />
+          <img src={src} alt="" /> */}
           <button type="submit">보내기</button>
         </form>
       </div>

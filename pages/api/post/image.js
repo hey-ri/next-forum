@@ -1,4 +1,4 @@
-import aws from 'aws-sdk';
+/* import aws from 'aws-sdk';
 export default async function handler(요청, 응답) {
   aws.config.update({
     accessKeyId: process.env.ACCESS_KEY,
@@ -19,3 +19,4 @@ export default async function handler(요청, 응답) {
 
   응답.status(200).json(url);
 }
+ */

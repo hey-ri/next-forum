@@ -1,0 +1,17 @@
+//1. 페이지만들었음
+export default async function Write2() {
+  //3. 서버기능만듦 유저한텐 안보임
+  async function handleSubmit(formData) {
+    'use server';
+    console.log(formData);
+    console.log(formData.get('title'));
+  }
+
+  //2.폼만들었음
+  return (
+    <form action={handleSubmit}>
+      <input type="text" name="title" />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}

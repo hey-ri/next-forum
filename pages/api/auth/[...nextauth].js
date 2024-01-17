@@ -8,8 +8,8 @@ import bcrypt from 'bcrypt';
 export const authOptions = {
   providers: [
     GithubProvider({
-      clientId: '5a1a19d7c1a872204164',
-      clientSecret: '06688838e2d105fc0b668b5247e14a82722659af',
+      clientId: process.env.GIT_CLIENTID,
+      clientSecret: process.env.GIT_CLIENTSECRET,
     }),
     CredentialsProvider({
       //1. 로그인페이지 폼 자동생성해주는 코드
@@ -61,7 +61,7 @@ export const authOptions = {
       return session;
     },
   },
-  secret: 'qwer1234!@#$',
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: MongoDBAdapter(connectDB),
 };
 export default NextAuth(authOptions);

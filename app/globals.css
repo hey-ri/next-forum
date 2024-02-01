@@ -10,6 +10,19 @@ body {
 .navbar {
   background: white;
   padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .util {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.navbar .util .login button {
+  background: transparent;
 }
 
 .navbar a {
@@ -58,6 +71,10 @@ a {
 .list-item .data > p {
   padding-top: 0.8rem;
   color: grey;
+}
+
+.list-item .list-txt p {
+  margin-top: 6px;
 }
 
 .list-item .category {

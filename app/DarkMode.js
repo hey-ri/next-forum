@@ -1,6 +1,8 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { FaMoon } from 'react-icons/fa';
+import { MdSunny } from 'react-icons/md';
 
 export default function DarkMode({ modeVal }) {
   const [changeModeVal, setChangeModeVal] = useState('');
@@ -20,7 +22,7 @@ export default function DarkMode({ modeVal }) {
         router.refresh();
       }}
     >
-      {modeVal == 'light' ? 'DarkMode' : 'LightMode'}
+      {modeVal == 'light' ? <FaMoon /> : <MdSunny />}
     </span>
   );
 }

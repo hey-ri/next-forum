@@ -27,17 +27,18 @@ export default async function RootLayout({ children }) {
       <body className={` ${inter.className} ${res && res.value == 'dark' ? 'dark-mode' : ''}`}>
         <div className="navbar">
           <Link href={'/'} className="logo">
-            Forum
+            메모장
           </Link>
-          <Link href={'/list'}>List</Link>
-          {session ? (
-            <span>
-              {session.user.name} <LogoutBtn />{' '}
-            </span>
-          ) : (
-            <LoginBtn />
-          )}
-          <DarkMode modeVal={res && res.value} />
+          <div className="util">
+            <DarkMode modeVal={res && res.value} />
+            {session ? (
+              <span>
+                {session.user.name} <LogoutBtn />
+              </span>
+            ) : (
+              <LoginBtn />
+            )}
+          </div>
         </div>
         {children}
       </body>

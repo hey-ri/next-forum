@@ -22,7 +22,7 @@ export default function ListItme({ result }) {
       {result.map((data, i) => (
         <div key={i} className="list-item">
           <div className="data">
-            <Link href={`/detail/${result[i]._id}`}>
+            <Link className="list-txt" href={`/detail/${result[i]._id}`}>
               <h4>{result[i].title}</h4>
               <p>{result[i].name}</p>
             </Link>
